@@ -4,15 +4,15 @@ d3.csv("encuestas_data.csv", function(error, datos) {
     datos.forEach(function(d) { 
         data.push([+d.x, +d.y]);
     });
-    console.log(data);
    
     var margin = {top: 20, right: 15, bottom: 60, left: 60}
       , width = 960 - margin.left - margin.right
       , height = 500 - margin.top - margin.bottom;
     
-    var x = d3.scale.linear()
-              .domain([0, d3.max(data, function(d) { return d[0]; })])
-              .range([ 0, width ]);
+    var x = d3.scale.log()
+              .domain([1, d3.max(data, function(d) { return d[0]; })])
+              .range([ 1, width ]);
+    console.log(x);
     
     var y = d3.scale.linear()
     	      .domain([0, d3.max(data, function(d) { return d[1]; })])
@@ -57,6 +57,6 @@ d3.csv("encuestas_data.csv", function(error, datos) {
       .enter().append("svg:circle")
           .attr("cx", function (d,i) { return x(d[0]); } )
           .attr("cy", function (d) { return y(d[1]); } )
-          .attr("r", 8);
+          .attr("r", 4);
 });
 
