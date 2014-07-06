@@ -59,5 +59,6 @@ d3.csv("encuestas_data.csv", function(error, datos) {
           .attr("cx", function (d,i) { return x(d[0]); } )
           .attr("cy", function (d) { return y(d[1]); } )
           .attr("r", 4);
+
 });
 
