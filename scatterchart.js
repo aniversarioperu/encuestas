@@ -12,7 +12,6 @@ d3.csv("encuestas_data.csv", function(error, datos) {
     var x = d3.scale.log()
               .domain([1, d3.max(data, function(d) { return d[0]; })])
               .range([ 1, width ]);
-    console.log(x);
     
     var y = d3.scale.linear()
     	      .domain([0, d3.max(data, function(d) { return d[1]; })])
@@ -33,6 +32,8 @@ d3.csv("encuestas_data.csv", function(error, datos) {
     // draw the x axis
     var xAxis = d3.svg.axis()
 	.scale(x)
+    .tickFormat(d3.format(',.0f'))
+    .tickValues([1, 10, 1000, 10000])
 	.orient('bottom');
 
     main.append('g')
